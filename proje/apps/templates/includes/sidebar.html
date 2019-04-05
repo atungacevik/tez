@@ -1,0 +1,28 @@
+<div class="home_right_side">
+
+					<div class="card">
+	<article class="card-group-item">
+		<header class="card-header">
+			<h6 class="title">Universities </h6>
+		</header>
+		<div class="filter-content">
+			<div class="card-body"><br>
+				<br>
+				<br>
+				<br><br>
+
+
+				{% for uni in universities%}
+
+				<a href="{% url 'home:uni_detail' uni.id %}">
+					<p>{{forloop.counter}}.) {{uni.name}}</p>
+				</a>
+
+				{% endfor %}
+
+				</div>
+			</div>
+		</article>
+		</div>
+
+		</div>
