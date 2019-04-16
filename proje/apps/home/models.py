@@ -38,3 +38,11 @@ class Year(models.Model):
 
     def __str__(self):
         return str(self.department.dep_no)
+
+
+class DepName(models.Model):
+
+    department_name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return str(self.department_name)

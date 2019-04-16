@@ -1,7 +1,8 @@
 <!DOCTYPE html>
+<html lang="en">
 {% load static %}
 
-<html lang="en">
+<br>
 <head>
 <title>Invest</title>
 <meta charset="utf-8">
@@ -14,7 +15,7 @@
 
 </head>
 
-<body>
+<body onload="makeTableScroll();makeTableScroll1();makeTableScroll2();makeTableScroll3(); ">
 {% include 'includes/header.html' %}
 
 {% block btw_header_side %}{%endblock btw_header_side%}
@@ -25,7 +26,12 @@
 {% block content %}{% endblock content %}
 
 
+
+
 {% include 'includes/js.html' %}
+{% include 'includes/footer.html' %}
 </body>
+
+
 
 </html>

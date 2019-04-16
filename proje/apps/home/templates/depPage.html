@@ -5,6 +5,8 @@
 
 <style>
 
+
+
 html{background-color: #11100e;}
 header{background: #11100e;}
 h1 {background-color:#11100e; }
@@ -17,12 +19,12 @@ body {font-family: Arial;}
   border: 1px solid #ccc;
   background-color: #f1f1f1;
 
-  
+
 }
 
 /* Style the buttons inside the tab */
 .tab button {
-  background-color: inherit;
+  background-color: #f1f1f1;
   float: left;
   border: none;
   outline: none;
@@ -48,8 +50,11 @@ body {font-family: Arial;}
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
-}
+  position:relative;
+  overflow-y:auto;
+  overflow-x:auto;
 
+}
 table {
             width:  100%;
 
@@ -62,6 +67,33 @@ table {
             overflow-y: auto;
         }
 
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: #f1f1f1;
+  color: black;
+}
+
+.navbar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
 
 </style>
 {% endblock extra_css %}
@@ -71,24 +103,25 @@ table {
 {% block content %}
 <div class="home_left_side" onload="makeTableScroll();">
 
-<br>
-    <br>
-    <br>
-    <br>
 
-<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
 
 
 
 <div class="tab" >
-    <h1>{{university.name}}</h1>
-  <button class="tablinks" onclick="openCity(event, '2018')">2018</button>
-  <button class="tablinks" onclick="openCity(event, '2017')">2017</button>
-  <button class="tablinks" onclick="openCity(event, '2016')">2016</button>
+    <h1>{{department.department_name}}</h1>
+    <button class="tablinks" onclick="openCity(event, '2018')">2018</button>
+    <button class="tablinks" onclick="openCity(event, '2017')">2017</button>
+    <button class="tablinks" onclick="openCity(event, '2016')">2016</button>
     <button class="tablinks" onclick="openCity(event, '2015')">2015</button>
 </div>
+
 
 <div class="scrollingTable">
 
@@ -103,14 +136,14 @@ table {
 	    <th>En Küçük Puan   </th>
   </tr>
 
-     {% for uniresults in uniresults2018 %}
+     {% for departments in departments2018 %}
 
 	 <tr>
-         <td>{{uniresults.department.university.name}}</td>
-         <td>{{uniresults.department}}</td>
-         <td>{{uniresults.dep_cap}}</td>
-         <td>{{uniresults.min_rank}}</td>
-         <td>{{uniresults.min_point}}</td></a>
+         <td>{{departments.department.university.name}}</td>
+         <td>{{departments.department}}</td>
+         <td>{{departments.dep_cap}}</td>
+         <td>{{departments.min_rank}}</td>
+         <td>{{departments.min_point}}</td></a>
 	</tr>
 
      {% endfor %}
@@ -128,14 +161,14 @@ table {
 	    <th>En Küçük Puan   </th>
   </tr>
 
-     {% for uniresults in uniresults2017 %}
+     {% for departments in departments2017 %}
 
 	 <tr>
-         <td>{{uniresults.department.university.name}}</td>
-         <td>{{uniresults.department}}</td>
-         <td>{{uniresults.dep_cap}}</td>
-         <td>{{uniresults.min_rank}}</td>
-         <td>{{uniresults.min_point}}</td></a>
+         <td>{{departments.department.university.name}}</td>
+         <td>{{departments.department}}</td>
+         <td>{{departments.dep_cap}}</td>
+         <td>{{departments.min_rank}}</td>
+         <td>{{departments.min_point}}</td></a>
 	</tr>
 
      {% endfor %}
@@ -152,14 +185,14 @@ table {
 	    <th>En Küçük Puan   </th>
   </tr>
 
-     {% for uniresults in uniresults2016 %}
+     {% for departments in departments2016 %}
 
 	 <tr>
-         <td>{{uniresults.department.university.name}}</td>
-         <td>{{uniresults.department}}</td>
-         <td>{{uniresults.dep_cap}}</td>
-         <td>{{uniresults.min_rank}}</td>
-         <td>{{uniresults.min_point}}</td></a>
+         <td>{{departments.department.university.name}}</td>
+         <td>{{departments.department}}</td>
+         <td>{{departments.dep_cap}}</td>
+         <td>{{departments.min_rank}}</td>
+         <td>{{departments.min_point}}</td></a>
 	</tr>
 
      {% endfor %}
@@ -177,14 +210,14 @@ table {
 	    <th>En Küçük Puan   </th>
   </tr>
 
-     {% for uniresults in uniresults2015 %}
+     {% for departments in departments2015 %}
 
 	 <tr>
-         <td>{{uniresults.department.university.name}}</td>
-         <td>{{uniresults.department}}</td>
-         <td>{{uniresults.dep_cap}}</td>
-         <td>{{uniresults.min_rank}}</td>
-         <td>{{uniresults.min_point}}</td></a>
+         <td>{{departments.department.university.name}}</td>
+         <td>{{departments.department}}</td>
+         <td>{{departments.dep_cap}}</td>
+         <td>{{departments.min_rank}}</td>
+         <td>{{departments.min_point}}</td></a>
 	</tr>
 
      {% endfor %}
@@ -193,7 +226,9 @@ table {
 
 </div>
 
-<script>
+</div>
+
+    <script>
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -206,11 +241,14 @@ function openCity(evt, cityName) {
   }
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
-}
-</script>
-</div>
 
-<script type="text/javascript">
+}
+
+
+
+</script>
+
+     <script type="text/javascript">
         function makeTableScroll() {
             // Constant retrieved from server-side via JSP
             var maxRows = 10;
@@ -274,3 +312,5 @@ function openCity(evt, cityName) {
     </script>
 
 {% endblock content %}</div>
+
+

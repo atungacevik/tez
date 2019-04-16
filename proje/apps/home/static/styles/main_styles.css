@@ -259,7 +259,7 @@ section
 }
 .home_left_side{
   height: 100%;
-  
+
   position: absolute;
   right: 0px;
   width: 73%;
@@ -269,7 +269,7 @@ section
 
 .home_right_side {
  height: 100%;
- 	
+
   position: absolute;
   left: 0px;
   width: 27%;
@@ -1617,9 +1617,9 @@ section
 	font-size: 11px !important;
 	font-style: italic;
 	color: #c2cbd7 !important;
-} 
+}
 .footer_newsletter_input:-ms-input-placeholder
-{ 
+{
 	font-size: 11px !important;
 	font-style: italic;
 	color: #c2cbd7 !important;
@@ -1797,3 +1797,5 @@ section
   background-color: #428bca;
   padding : 5px 15px;
 }
+
+
