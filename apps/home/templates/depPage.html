@@ -1,0 +1,316 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extra_css %}
+
+<style>
+
+
+
+html{background-color: #11100e;}
+header{background: #11100e;}
+h1 {background-color:#11100e; }
+
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+
+
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: #f1f1f1;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  position:relative;
+  overflow-y:auto;
+  overflow-x:auto;
+
+}
+table {
+            width:  100%;
+
+        }
+        td {
+            border: 1px solid black;
+        }
+        .scrollingTable {
+            width: 70em;
+            overflow-y: auto;
+        }
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: #f1f1f1;
+  color: black;
+}
+
+.navbar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+</style>
+{% endblock extra_css %}
+
+
+<div class="fixer">
+{% block content %}
+<div class="home_left_side" onload="makeTableScroll();">
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+<div class="tab" >
+    <h1>{{department.department_name}}</h1>
+    <button class="tablinks" onclick="openCity(event, '2018')">2018</button>
+    <button class="tablinks" onclick="openCity(event, '2017')">2017</button>
+    <button class="tablinks" onclick="openCity(event, '2016')">2016</button>
+    <button class="tablinks" onclick="openCity(event, '2015')">2015</button>
+</div>
+
+
+<div class="scrollingTable">
+
+
+ <div  id="2018" class="tabcontent">
+<table id="myTable">
+	<tr>
+        <th>Üniversite İsmi </th>
+	    <th>Bölüm Adı   </th>
+        <th>Bölüm Kapasitesi   </th>
+        <th>En Küçük Sıra   </th>
+	    <th>En Küçük Puan   </th>
+  </tr>
+
+     {% for departments in departments2018 %}
+
+	 <tr>
+         <td>{{departments.department.university.name}}</td>
+         <td>{{departments.department}}</td>
+         <td>{{departments.dep_cap}}</td>
+         <td>{{departments.min_rank}}</td>
+         <td>{{departments.min_point}}</td></a>
+	</tr>
+
+     {% endfor %}
+ </table>
+ </div>
+
+
+    <div  id="2017" class="tabcontent">
+ <table id="myTable1">
+	<tr>
+        <th>Üniversite İsmi </th>
+	    <th>Bölüm Adı   </th>
+        <th>Bölüm Kapasitesi   </th>
+        <th>En Küçük Sıra   </th>
+	    <th>En Küçük Puan   </th>
+  </tr>
+
+     {% for departments in departments2017 %}
+
+	 <tr>
+         <td>{{departments.department.university.name}}</td>
+         <td>{{departments.department}}</td>
+         <td>{{departments.dep_cap}}</td>
+         <td>{{departments.min_rank}}</td>
+         <td>{{departments.min_point}}</td></a>
+	</tr>
+
+     {% endfor %}
+     </table>
+     </div>
+
+     <div  id="2016" class="tabcontent">
+ <table id="myTable2">
+	<tr>
+        <th>Üniversite İsmi </th>
+	    <th>Bölüm Adı   </th>
+        <th>Bölüm Kapasitesi   </th>
+        <th>En Küçük Sıra   </th>
+	    <th>En Küçük Puan   </th>
+  </tr>
+
+     {% for departments in departments2016 %}
+
+	 <tr>
+         <td>{{departments.department.university.name}}</td>
+         <td>{{departments.department}}</td>
+         <td>{{departments.dep_cap}}</td>
+         <td>{{departments.min_rank}}</td>
+         <td>{{departments.min_point}}</td></a>
+	</tr>
+
+     {% endfor %}
+     </table>
+     </div>
+
+
+     <div  id="2015" class="tabcontent">
+ <table id="myTable3">
+	<tr>
+        <th>Üniversite İsmi </th>
+	    <th>Bölüm Adı   </th>
+        <th>Bölüm Kapasitesi   </th>
+        <th>En Küçük Sıra   </th>
+	    <th>En Küçük Puan   </th>
+  </tr>
+
+     {% for departments in departments2015 %}
+
+	 <tr>
+         <td>{{departments.department.university.name}}</td>
+         <td>{{departments.department}}</td>
+         <td>{{departments.dep_cap}}</td>
+         <td>{{departments.min_rank}}</td>
+         <td>{{departments.min_point}}</td></a>
+	</tr>
+
+     {% endfor %}
+     </table>
+     </div>
+
+</div>
+
+</div>
+
+    <script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+
+}
+
+
+
+</script>
+
+     <script type="text/javascript">
+        function makeTableScroll() {
+            // Constant retrieved from server-side via JSP
+            var maxRows = 10;
+
+            var table = document.getElementById('myTable');
+            var wrapper = table.parentNode;
+            var rowsInTable = table.rows.length;
+            var height = 0;
+            if (rowsInTable > maxRows) {
+                for (var i = 0; i < maxRows; i++) {
+                    height += table.rows[i].clientHeight;
+                }
+                wrapper.style.height = 400 + "px";
+            }
+        }
+         function makeTableScroll1() {
+            // Constant retrieved from server-side via JSP
+            var maxRows = 10;
+
+            var table = document.getElementById('myTable1');
+            var wrapper = table.parentNode;
+            var rowsInTable = table.rows.length;
+            var height = 0;
+            if (rowsInTable > maxRows) {
+                for (var i = 0; i < maxRows; i++) {
+                    height += table.rows[i].clientHeight;
+                }
+                wrapper.style.height = 400 + "px";
+            }
+        }
+         function makeTableScroll2() {
+            // Constant retrieved from server-side via JSP
+            var maxRows = 10;
+
+            var table = document.getElementById('myTable2');
+            var wrapper = table.parentNode;
+            var rowsInTable = table.rows.length;
+            var height = 0;
+            if (rowsInTable > maxRows) {
+                for (var i = 0; i < maxRows; i++) {
+                    height += table.rows[i].clientHeight;
+                }
+                wrapper.style.height = 400 + "px";
+            }
+        }
+         function makeTableScroll3() {
+            // Constant retrieved from server-side via JSP
+            var maxRows = 10;
+
+            var table = document.getElementById('myTable3');
+            var wrapper = table.parentNode;
+            var rowsInTable = table.rows.length;
+            var height = 0;
+            if (rowsInTable > maxRows) {
+                for (var i = 0; i < maxRows; i++) {
+                    height += table.rows[i].clientHeight;
+                }
+                wrapper.style.height = 400 + "px";
+            }
+        }
+    </script>
+
+{% endblock content %}</div>
+
+
