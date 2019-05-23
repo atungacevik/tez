@@ -136,7 +136,7 @@ function openCity(evt, cityName) {
 <script type="text/javascript">
         function makeTableScroll() {
             // Constant retrieved from server-side via JSP
-            var maxRows = 10;
+            var maxRows = 7;
 
             var table = document.getElementById('myTable');
             var wrapper = table.parentNode;
@@ -146,69 +146,10 @@ function openCity(evt, cityName) {
                 for (var i = 0; i < maxRows; i++) {
                     height += table.rows[i].clientHeight;
                 }
-                wrapper.style.height = 400 + "px";
+                wrapper.style.height = 575  + "px";
             }
         }
-         function makeTableScroll1() {
-            // Constant retrieved from server-side via JSP
-            var maxRows = 10;
 
-            var table = document.getElementById('myTable1');
-            var wrapper = table.parentNode;
-            var rowsInTable = table.rows.length;
-            var height = 0;
-            if (rowsInTable > maxRows) {
-                for (var i = 0; i < maxRows; i++) {
-                    height += table.rows[i].clientHeight;
-                }
-                wrapper.style.height = 400 + "px";
-            }
-        }
-         function makeTableScroll2() {
-            // Constant retrieved from server-side via JSP
-            var maxRows = 10;
-
-            var table = document.getElementById('myTable2');
-            var wrapper = table.parentNode;
-            var rowsInTable = table.rows.length;
-            var height = 0;
-            if (rowsInTable > maxRows) {
-                for (var i = 0; i < maxRows; i++) {
-                    height += table.rows[i].clientHeight;
-                }
-                wrapper.style.height = 400 + "px";
-            }
-        }
-         function makeTableScroll3() {
-            // Constant retrieved from server-side via JSP
-            var maxRows = 10;
-
-            var table = document.getElementById('myTable3');
-            var wrapper = table.parentNode;
-            var rowsInTable = table.rows.length;
-            var height = 0;
-            if (rowsInTable > maxRows) {
-                for (var i = 0; i < maxRows; i++) {
-                    height += table.rows[i].clientHeight;
-                }
-                wrapper.style.height = 400 + "px";
-            }
-        }
-        function makeTableScroll5() {
-            // Constant retrieved from server-side via JSP
-            var maxRows = 10;
-
-            var table = document.getElementById('myTable');
-            var wrapper = table.parentNode;
-            var rowsInTable = table.rows.length;
-            var height = 0;
-            if (rowsInTable > maxRows) {
-                for (var i = 0; i < maxRows; i++) {
-                    height += table.rows[i].clientHeight;
-                }
-                wrapper.style.height = 400 + "px";
-            }
-        }
-    </script>
+       </script>
 
 {% endblock content %}</div>

@@ -71,28 +71,69 @@ table {
 {% block content %}
 <div class="home_left_side" onload="makeTableScroll();">
 
-<br>
+
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
     <br>
 
-<br>
-    <br>
-    <br>
-    <b>üniler:</b><br>
 
-    {% for uni in unies %}
-        {{uni.name}} <br>
-    {% empty %}
-        aradığın üniversite yok {{search_query}}
-    {% endfor %}
-    <br><br><br>
-    <b>departmanlar:</b><br>
-    {% for dep in deps %}
-        {{dep.dep_name}} <br>
-    {% empty %}
-        aradığın departman yok {{search_query}}
-    {% endfor %}
+
+<div class="tab" >
+    <h1>{{department.department_name}}</h1>
+    <button class="tablinks" onclick="openCity(event, '2018')">Arama Sonucuyla İlgili Üniversiteler</button>
+    <button class="tablinks" onclick="openCity(event, '2017')">Arama Sonucuyla İlgili Bölümler</button>
+
+</div>
+
+
+<div class="scrollingTable">
+
+
+ <div  id="2018" class="tabcontent">
+<table id="myTable">
+	<tr>
+        <th>Üniversite İsmi </th>
+
+  </tr>
+
+     {% for university in unies %}
+
+	 <tr>
+         <td><a href="/university/{{university.id}}">{{university.name}}</a></td>
+
+	</tr>
+
+     {% endfor %}
+
+
+
+
+ </table>
+ </div>
+
+
+    <div  id="2017" class="tabcontent">
+ <table id="myTable1">
+	<tr>
+        <th>Bölüm İsmi </th>
+
+  </tr>
+      {% for departments in deps %}
+
+	 <tr>
+
+         <td><a href="/department/{{departments.id}}">{{departments.department_name}}</a></td>
+
+	</tr>
+
+     {% endfor %}
+     </table>
+     </div>
+
 
 <script>
 function openCity(evt, cityName) {

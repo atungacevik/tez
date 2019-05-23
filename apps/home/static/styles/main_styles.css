@@ -789,6 +789,7 @@ section
 	display: inline-block;
 	width: 25px;
 	height: 25px;
+
 	margin-left: 25px;
 	cursor: pointer;
 	-webkit-transform: translateY(1px);
@@ -800,6 +801,7 @@ section
 .main_menu_search svg
 {
 	max-width: 100%;
+
 }
 .mag_path
 {
@@ -813,17 +815,18 @@ section
 .main_menu_search_button:hover .mag_path
 {
 	fill: #11100e;
+
 }
 .main_menu_search_content
 {
 	position: absolute;
-	top: 70px;
+
 	right: 0;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 	cursor: default;
 	visibility: hidden;
-	opacity: 0;
+
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
 	-ms-transition: all 200ms ease;
@@ -834,13 +837,11 @@ section
 .main_menu_search_content.active
 {
 	visibility: visible;
-	opacity: 1;
-	top: 50px;
-	text-color: #000000;
+
 }
 .search_input
 {
-	background: transparent;
+
 	border: solid 2px #ffa800;
 	outline: none;
 	height: 40px;
@@ -868,7 +869,7 @@ section
 	color: #000000;
 } 
 .search_input:-ms-input-placeholder
-{ 
+{
 	font-size: 12px !important;
 	font-style: italic;
 	color: #000000;
@@ -1230,7 +1231,7 @@ section
 	display: inline-block;
 	width: 84px;
 	height: 52px;
-	background: transparent;
+
 	color: #FFFFFF;
 	text-align: center;
 	font-size: 18px;

@@ -1,19 +1,423 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Invest</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Invest project">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
-<link rel="stylesheet" type="text/css" href="styles/responsive.css">
-</head>
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extra_css %}
+
+<style>
+
+html{background-color: #11100e;}
+header{background: #11100e;}
+h1 {background-color:#11100e; }
+h2 {padding-left:250px; background-color:#4286f4; color:#FFFFFF;}
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
 
 
-</hmtl>
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+   position:absolute;
+  top: 57,5%;
+  left: 13%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+input {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+input {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.button2:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+
+}
+table .last, td:last-child {
+    padding: 0px 0px 0px 0px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  margin-left:300px;
+  left:300px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+table {
+            width:  30%;
+            padding-left:250px;
+            padding-top:0px;
+        }
+        td {
+            border: 1px solid black;
+        }
+        .scrollingTable {
+            width: 70em;
+            overflow-y: auto;
+        }
+
+
+         table, th, td {
+            border: 1px solid black;
+
+         }
+
+
+</style>
+{% endblock extra_css %}
+
+
+<div class="fixer">
+{% block content %}
+<div class="home_left_side" onload="makeTableScroll();">
+
+<br>
+    <br>
+    <br>
+    <br>
+
+<br>
+    <br>
+    <br>
+
+<h1>Puan Hesaplama</h1>
+
+
+
+ <script>
+
+            function calc()
+            {
+                var n1 = parseFloat(document.getElementById('n1').value);
+                var m1 = parseFloat(document.getElementById('m1').value);
+                var n1_1 = m1/4;
+                var n2 = parseFloat(document.getElementById('n2').value);
+                var m2 = parseFloat(document.getElementById('m2').value);
+                var n2_1 = m2/4;
+                var n3 = parseFloat(document.getElementById('n3').value);
+                var m3 = parseFloat(document.getElementById('m3').value);
+                var n3_1 = m3/4;
+                var n4 = parseFloat(document.getElementById('n4').value);
+                var m4 = parseFloat(document.getElementById('m4').value);
+                var n4_1 = m4/4;
+                var n5 =  parseFloat(document.getElementById('orta_ogretim_basari_puani').value);
+                    if(n1+m1<=40 && n2+m2<=20  && n3+m3<=40 && n4+m4<=20 && 50<=n5 && n5<=100){
+                    document.getElementById('result1').value = n1-n1_1;
+                    var x = n1-n1_1;
+                    document.getElementById('result2').value = n2-n2_1;
+                    document.getElementById('result3').value = n3-n3_1;
+                    document.getElementById('result4').value = n4-n4_1;
+                    document.getElementById('ham_puan').value = 100+((n1-n1_1)*3.33)+((n2-n2_1)*3.34)+((n3-n3_1)*3.33)+((n4-n4_1)*3.34);
+                    document.getElementById('yer_puan').value = 100+((n1-n1_1)*3.33)+((n2-n2_1)*3.34)+((n3-n3_1)*3.33)+((n4-n4_1)*3.34)+(n5*0.6);
+                           }
+                    else  {
+                    alert("Lütfen Girdiğiniz Bilgileri Kontrol Ediniz.");
+                    }
+                            }
+
+
+
+        </script>
+
+    <script>
+        function calculate()
+            {  var n1 = parseFloat(document.getElementById('a1').value);
+                var m1 = parseFloat(document.getElementById('b1').value);
+                var n1_1 = m1/4;
+                var n2 = parseFloat(document.getElementById('a2').value);
+                var m2 = parseFloat(document.getElementById('b2').value);
+                var n2_1 = m2/4;
+                var n3 = parseFloat(document.getElementById('a3').value);
+                var m3 = parseFloat(document.getElementById('b3').value);
+                var n3_1 = m3/4;
+                var n4 = parseFloat(document.getElementById('a4').value);
+                var m4 = parseFloat(document.getElementById('b4').value);
+                var n4_1 = m4/4;
+                var n5 = parseFloat(document.getElementById('a5').value);
+                var m5 = parseFloat(document.getElementById('b5').value);
+                var n5_1 = m5/4;
+                <!--TYT -->
+                 var h1 = parseFloat(document.getElementById('n1').value);
+                var t1 = parseFloat(document.getElementById('m1').value);
+                var h1_1 = h1-t1/4;
+                var h2 = parseFloat(document.getElementById('n2').value);
+                var t2 = parseFloat(document.getElementById('m2').value);
+                var h2_1 = h2-t2/4;
+                var h3 = parseFloat(document.getElementById('n3').value);
+                var t3 = parseFloat(document.getElementById('m3').value);
+                var h3_1 = h3-t3/4;
+                var h4 = parseFloat(document.getElementById('n4').value);
+                var t4 = parseFloat(document.getElementById('m4').value);
+                var h4_1 = h4-t4/4;
+
+                var n6 =  parseFloat(document.getElementById('orta_ogretim_basari_puani').value);
+                    if(n1+m1<=40 && n2+m2<=40  && n3+m3<=40 && n4+m4<=40 && n5+m5<=80 && 50<=n6 && n6<=100 && h1+t1<=40 && h2+t2<=20 && h3+t3<=40 && h4+t4<=20 ){
+                    document.getElementById('net1').value = n1-n1_1;
+                    var x = n1-n1_1;
+                    document.getElementById('net2').value = n2-n2_1;
+                    document.getElementById('net3').value = n3-n3_1;
+                    document.getElementById('net4').value = n4-n4_1;
+                    document.getElementById('net5').value = n5-n5_1;
+                    document.getElementById('hamAYTSay_puan').value = 100+(((h1)*3.33)+((h2)*3.34)+((h3)*3.33)+((h4)*3.34))*0.4 + ((((n3-n3_1)*3) + ((n4-n4_1)*3))*0.6);
+                    document.getElementById('yerAYTSay_puan').value = 100+(((h1)*3.33)+((h2)*3.34)+((h3)*3.33)+((h4)*3.34))*0.4 + ((((n3-n3_1)*3) + ((n4-n4_1)*3))*0.6) +(n6*0.6);
+                    document.getElementById('hamAYTEA_puan').value = 100+(((h1)*3.33)+((h2)*3.34)+((h3)*3.33)+((h4)*3.34))*0.4 + ((((n3-n3_1)*3) + ((n1-n1_1)*3))*0.6);
+                    document.getElementById('yerAYTEA_puan').value = 100+(((h1)*3.33)+((h2)*3.34)+((h3)*3.33)+((h4)*3.34))*0.4 + ((((n3-n3_1)*3) + ((n1-n1_1)*3))*0.6)+(n6*0.6);
+                    document.getElementById('hamAYTSozel_puan').value = 100+(((h1)*3.33)+((h2)*3.34)+((h3)*3.33)+((h4)*3.34))*0.4 + ((((n1-n1_1)*3) + ((n2-n2_1)*3))*0.6);
+                    document.getElementById('yerAYTSozel_puan').value = 100+(((h1)*3.33)+((h2)*3.34)+((h3)*3.33)+((h4)*3.34))*0.4 + ((((n1-n1_1)*3) + ((n2-n2_1)*3))*0.6)+(n6*0.6);
+                    document.getElementById('hamAYTDil_puan').value = 100+(((h1)*3.33)+((h2)*3.34)+((h3)*3.33)+((h4)*3.34))*0.4 + ((((n5-n5_1)*3))*0.6);
+                    document.getElementById('yerAYTDil_puan').value = 100+(((h1)*3.33)+((h2)*3.34)+((h3)*3.33)+((h4)*3.34))*0.4 + (((n5-n5_1)*3)*0.6)+(n6*0.6);
+                    document.getElementById("uniqueID").value = document.getElementById('yerAYTSay_puan').value;
+                           }
+                            else{
+                            alert("Lütfen Girdiğiniz Bilgileri Kontrol Ediniz.");
+
+                            }
+                            }
+
+</script>
+
+<!--        TÜRKÇE <br>-->
+<!--        Doğru <input type="text" STYLE="color: #FFFFFF; font-family: Verdana; font-weight: bold; font-size: 12px; background-color: #72A4D2;"  id="n1"/><br/><br/>-->
+<!--        Yanlış<input type="text" id="n2"/><br/><br/>-->
+<!--        Net<input type="text" id="result"/><br><br>-->
+<!--        <button onclick="calc();">HESAPLA</button>-->
+
+
+<br>
+<input style="width:100px; margin-left:425px;" type="text" id="orta_ogretim_basari_puani"/><br>
+    <g  style="width:100px; margin-left:365px; color:#000000;">Orta Öğretim Başarı Puanınızı Giriniz
+</g>
+<br><br>
+
+    <h2>TYT PUAN HESAPLAMA</h2>
+      <table style=" margin-left:50px;">
+          <tbody  style=" margin-left:50px;">
+         <tr>
+            <th></th>
+            <th>Türkçe(40)</th>
+
+            <th>Sosyal(20)</th>
+
+            <th>Matematik(40)</th>
+
+            <th>Fen(20)</th>
+         </tr>
+            <tr>
+                <td>Doğru</td>
+                <td><input type="text" id="n1"/></td>
+                <td><input type="text" id="n2"/></td>
+                <td><input type="text" id="n3"/></td>
+                <td><input type="text" id="n4"/></td>
+         </tr>
+         <tr>
+            <td>Yanlış</td>
+            <td><input type="text" id="m1"/></td>
+             <td><input type="text" id="m2"/></td>
+             <td><input type="text" id="m3"/></td>
+             <td><input type="text" id="m4"/></td>
+
+         </tr>
+         <tr>
+            <td>Net</td>
+            <td><input type="text" id="result1" readonly/></td>
+             <td><input type="text" id="result2" readonly/></td>
+             <td><input type="text" id="result3" readonly/></td>
+             <td><input type="text" id="result4" readonly/></td>
+         </tr>
+          </tbody>
+      </table>
+    <button class="button button2" onclick="calc()";>HESAPLA</button>
+
+
+      <table style=" margin-left:500px; margin-top:-90px;">
+          <tbody  style=" margin-left:500px; ">
+         <tr>
+
+            <th>TYT Sonucu</th>
+
+            <th>Ham Puan</th>
+
+            <th>Yer. Puanı</th>
+
+         </tr>
+         <tr>
+            <td>Sonuçlar</td>
+            <td><input type="text" id="ham_puan" readonly/></td>
+             <td><input type="text" id="yer_puan" readonly/></td>
+         </tr>
+
+
+      </table>
+<br><br><br><br>
+
+
+    <h2>AYT PUAN HESAPLAMA</h2>
+      <table style=" margin-left:50px;">
+          <tbody  style=" margin-left:50px;">
+         <tr>
+            <th></th>
+            <th>Edb/Sos-1(40)</th>
+
+            <th>Sosyal(40)</th>
+
+            <th>Matematik(40)</th>
+
+            <th>Fen(40)</th>
+
+             <th>Dil(80)</th>
+         </tr>
+            <tr>
+                <td>Doğru</td>
+                <td><input type="text" id="a1"/></td>
+                <td><input type="text" id="a2"/></td>
+                <td><input type="text" id="a3"/></td>
+                <td><input type="text" id="a4"/></td>
+                <td><input type="text" id="a5"/></td>
+         </tr>
+         <tr>
+            <td>Yanlış</td>
+            <td><input type="text" id="b1"/></td>
+             <td><input type="text" id="b2"/></td>
+             <td><input type="text" id="b3"/></td>
+             <td><input type="text" id="b4"/></td>
+             <td><input type="text" id="b5"/></td>
+
+         </tr>
+         <tr>
+            <td>Net</td>
+            <td><input type="text" id="net1" readonly/></td>
+             <td><input type="text" id="net2" readonly/></td>
+             <td><input type="text" id="net3" readonly/></td>
+             <td><input type="text" id="net4" readonly/></td>
+             <td><input type="text" id="net5" readonly/></td>
+         </tr>
+          </tbody>
+      </table>
+    <button class="button button2" onclick="calculate()";>HESAPLA</button>
+
+
+      <table style=" margin-left:500px; margin-top:-120px;">
+          <tbody  style=" margin-left:500px; ">
+         <tr>
+
+            <th>AYT Sonucu</th>
+
+            <th>Ham Puan</th>
+
+            <th>Yer. Puanı</th>
+
+         </tr>
+         <tr>
+            <td>Eşit Ağırlık</td>
+            <td><input type="text" id="hamAYTEA_puan" readonly/></td>
+             <td><input type="text" id="yerAYTEA_puan" readonly/></td>
+         </tr>
+          <tr>
+            <td>Sözel</td>
+            <td><input type="text" id="hamAYTSozel_puan" readonly/></td>
+             <td><input type="text" id="yerAYTSozel_puan" readonly/></td>
+         </tr>
+          <tr>
+            <td>Sayısal</td>
+            <td><input type="text" id="hamAYTSay_puan" readonly/></td>
+             <td><input type="text" id="yerAYTSay_puan" readonly/></td>
+         </tr>
+          <tr>
+            <td>Dil</td>
+            <td><input type="text" id="hamAYTDil_puan" readonly/></td>
+             <td><input type="text" id="yerAYTDil_puan" readonly/></td>
+         </tr>
+
+      </table>
+
+
+<!--    <form action="{% url 'home:search' %}" method="get">-->
+<!--        <input type="submit"   class="search_input" type="search" name=uniqueID required="required">-->
+
+<!--    </form>-->
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+</div>
+
+<script type="text/javascript">
+        function makeTableScroll() {
+            // Constant retrieved from server-side via JSP
+            var maxRows = 7;
+
+            var table = document.getElementById('myTable');
+            var wrapper = table.parentNode;
+            var rowsInTable = table.rows.length;
+            var height = 0;
+            if (rowsInTable > maxRows) {
+                for (var i = 0; i < maxRows; i++) {
+                    height += table.rows[i].clientHeight;
+                }
+                wrapper.style.height = 345 + "px";
+            }
+        }
+
+       </script>
+
+{% endblock content %}</div>

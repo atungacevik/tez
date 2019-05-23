@@ -5,8 +5,21 @@ from django.db.models import Q
 from .models import University, Department, DepName, Year
 from home.mixins import SidebarUnies
 from unicode_tr import unicode_tr
+from django.template import Context,loader,RequestContext
+from django.shortcuts import render_to_response, get_object_or_404
+from django.forms import ModelForm
+from django.http import HttpResponse, Http404,HttpResponseRedirect,HttpResponseNotFound
 
 # from icu import UnicodeString, Locale
+
+
+class IndexPageView(SidebarUnies, View):
+
+    def get(self, request, *args, **kwargs):
+        context={}
+        context['universities'] = self.get_unies()
+
+        return render(request, 'index.html', context)
 
 
 class UniversityPageView(SidebarUnies, View):
@@ -114,7 +127,22 @@ class SearchView(SidebarUnies, View):
 
             unies = University.objects.filter(name__icontains=true_search_query)
             deps = Department.objects.filter(dep_name__icontains=true_search_query)
+
             context['unies'] = unies
             context['deps'] = deps
 
         return render(request, "search.html", context)
+
+
+class SuggestionToolView(SidebarUnies, View):
+
+    def get(self, request, *args, **kwargs):
+        search_query = request.GET.get("q", None)
+
+        context = {
+            'universities': self.get_unies(),
+            'search_query': search_query,
+  }
+
+
+        return render(request, "SuggestionTool.html", context)
